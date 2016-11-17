@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 var express        = require('express'),
 	app            = express(),
 	port           = process.env.PORT || 3000,
@@ -10,7 +12,7 @@ var express        = require('express'),
 	session        = require('express-session'),
 	expressLayouts = require('express-ejs-layouts')
 
-mongoose.connect("mongodb://localhost/cms-apii") //insert database here
+mongoose.connect(process.env.MONGODB_URI) //insert database here
 
 require('./app/helpers/passport')(passport)
 
@@ -22,7 +24,7 @@ app.use(expressLayouts)
 app.use(express.static(__dirname + '/public'))
 
 //passport stuff
-app.use(session({ secret: 'wkwkwkwk' })) 
+app.use(session({ secret: process.env.SECRET })) 
 app.use(passport.initialize())
 app.use(passport.session()) //persistent login sessions
 app.use(flash())
