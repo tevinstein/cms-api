@@ -10,7 +10,9 @@ var express        = require('express'),
 	cookieParser   = require('cookie-parser'),
 	bodyParser     = require('body-parser'),
 	session        = require('express-session'),
-	expressLayouts = require('express-ejs-layouts')
+	expressLayouts = require('express-ejs-layouts'),
+
+	expressValidator = require('express-validator')
 
 mongoose.connect(process.env.MONGODB_URI) //insert database here
 
@@ -22,6 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.set('view engine', 'ejs')
 app.use(expressLayouts)
 app.use(express.static(__dirname + '/public'))
+app.use(expressValidator())
 
 //passport stuff
 app.use(session({ secret: process.env.SECRET })) 
