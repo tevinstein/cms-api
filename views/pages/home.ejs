@@ -1,3 +1,24 @@
+<!-- All Modals -->
+<!-- Delete Data Modal -->
+<div class="modal fade" id="deleteDataModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content" style="background: rgba(255,255,255,0.9); padding: 10px 10px 5px 10px">
+            <div class="modal-body">
+                <div class="form-group row">
+                    <form id="edit-customer-form">
+                        <div class="col-md-12" style="margin-bottom: 5px">
+                            <h1>Are you sure you want to delete this data?</h1>
+                        </div>
+                        <div class="col-md-12">
+                            <button type="submit" id="process-edit-customer" onclick="deleteData(this,event)" class="btn btn-danger btn-block">Delete Data</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div id="home">
     <div class="container">
         <div class="row">
@@ -38,24 +59,23 @@
                         <!-- Default panel -->
                         <div class="panel-heading">Data</div>
                         <div class="panel-body text-center">
-                        <form>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="search-data-letter" placeholder="Search letter">
+                            <form>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="search-data-letter" placeholder="Search letter">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="search-data-frequency" placeholder="Search frequency">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="search-data-frequency" placeholder="Search frequency">
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
                             <div class="clearfix">
                                 <button onclick="showAddData()" class="btn btn-md btn-info pull-right"><span class="fa fa-plus"></span> Add data</button>
                             </div>
                             <!-- Message -->
                             <div id="data-message">
-                                
                             </div>
                             <!-- Hidden Form -->
                             <div id="add-data">
@@ -94,24 +114,23 @@
                         <!-- Default panel contents -->
                         <div class="panel-heading">Data Date</div>
                         <div class="panel-body text-center">
-                        <form>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" id="datepicker" class="form-control" name="search-data-date-letter" placeholder="Search date">
+                            <form>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" id="datepicker" class="form-control" name="search-data-date-letter" placeholder="Search date">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="search-data-date-frequency" placeholder="Search frequency">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="search-data-date-frequency" placeholder="Search frequency">
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
                             <div class="clearfix">
                                 <button onclick="showAddDataDate()" class="btn btn-md btn-warning pull-right"><span class="fa fa-plus"></span> Add data date</button>
                             </div>
                             <!-- Message -->
                             <div id="data-date-message">
-                                
                             </div>
                             <!-- Hidden Add Data Date Form -->
                             <div id="add-data-date">
