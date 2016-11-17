@@ -10,7 +10,7 @@ var express        = require('express'),
 	session        = require('express-session'),
 	expressLayouts = require('express-ejs-layouts')
 
-mongoose.connect("mongodb://localhost/cms-api") //insert database here
+mongoose.connect("mongodb://localhost/cms-apii") //insert database here
 
 require('./app/helpers/passport')(passport)
 
