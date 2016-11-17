@@ -36,11 +36,35 @@ function listData(results) {
                 <td class="data-frequency">' + results[i].frequency + '</td>\
                 <td>\
                     <button onclick="editData(this,event)" id="edit-data-button" data-id="' + results[i]._id + '" class="btn btn-sm btn-default"><span class="fa fa-pencil"></span></button>\
-                    <button id="delete-data-button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#myModal" data-id="' + results[i]._id + '"><span class="fa fa-trash"></span></button>\
+                    <button id="delete-data-button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#deleteDataModal" onclick="showDeleteData(this)" data-id="' + results[i]._id + '"><span class="fa fa-trash"></span></button>\
                 </td>\
             </tr>\
             ')
     }
+}
+
+function showDeleteData(pointer) {
+    $('#process-delete-data').removeAttr('data-id')
+
+    var id = $(pointer).attr('data-id')
+    $('#process-delete-data').attr('data-id', id)
+}
+
+function deleteData(pointer,event) {
+    event.preventDefault()
+
+    var id = $(pointer).attr('data-id')
+    $.ajax({
+        url: "/api/datas/" + id,
+        type: 'DELETE',
+        success: function() {
+            $(pointer).closest('tr').remove()
+            $('#data-message').empty()
+            $('#data-message').append('<div class="alert alert-info">Data is deleted</div>')
+            getAllDatas()
+            $('#deleteDataModal').modal('toggle');
+        }
+    })
 }
 
 function addData(event) {
@@ -91,21 +115,6 @@ function editData(pointer,event) {
 
     $('#add-data-button').attr('data-id', id)
     $('#add-data').show()
-}
-
-function deleteData(pointer,event) {
-    event.preventDefault()
-
-    var id = $(pointer).attr('data-id')
-    $.ajax({
-        url: "/api/datas/" + id,
-        type: 'DELETE',
-        success: function() {
-            $(pointer).closest('tr').remove()
-            $('#data-message').empty()
-            $('#data-message').append('<div class="alert alert-info">Data is deleted</div>')
-        }
-    })
 }
 
 function showAddData() {
