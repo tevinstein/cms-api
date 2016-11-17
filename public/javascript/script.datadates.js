@@ -33,8 +33,42 @@ function listDataDate(results) {
     $('.table-data-date tbody').empty()
 
     for (var i = 0; i < results.length; i++) {
-        $('.table-data-date tbody').append('<tr><td>' + (i + 1) + '</td><td class="data-date-letter">' + results[i].letter + '</td><td class="data-date-frequency">' + results[i].frequency + '</td><td><button onclick="editDataDate(this,event)" data-id="' + results[i]._id + '" class="btn btn-sm btn-default"><span class="fa fa-pencil"></span></button><button onclick="deleteDataDate(this)" class="btn btn-sm btn-default" data-id="' + results[i]._id + '"><span class="fa fa-trash"></span></button></td></tr>')
+        $('.table-data-date tbody').append('\
+            <tr>\
+                <td>' + (i + 1) + '</td>\
+                <td class="data-date-letter">' + results[i].letter + '</td>\
+                <td class="data-date-frequency">' + results[i].frequency + '</td>\
+                <td>\
+                <button onclick="editDataDate(this,event)" data-id="' + results[i]._id + '" class="btn btn-sm btn-default"><span class="fa fa-pencil"></span></button>\
+                <button id="delete-data-date-button" onclick="showDeleteDataDate(this)" data-toggle="modal" data-target="#deleteDataDateModal" class="btn btn-sm btn-default" data-id="' + results[i]._id + '"><span class="fa fa-trash"></span></button>\
+                </td>\
+            </tr>\
+            ')
     }
+}
+
+function showDeleteDataDate(pointer) {
+    $('#process-delete-data-date').removeAttr('data-id')
+
+    var id = $(pointer).attr('data-id')
+    $('#process-delete-data-date').attr('data-id', id)
+}
+
+function deleteDataDate(pointer,event) {
+    event.preventDefault()
+
+    var id = $(pointer).attr('data-id')
+    $.ajax({
+        url: "/api/datadates/" + id,
+        type: 'DELETE',
+        success: function() {
+            $(pointer).closest('tr').remove()
+            $('#data-date-message').empty()
+            $('#data-date-message').append('<div class="alert alert-warning">Data is deleted</div>')
+            getAllDataDates()
+            $('#deleteDataDateModal').modal('toggle');
+        }
+    })
 }
 
 function addDataDate(event) {
@@ -85,19 +119,6 @@ function editDataDate(pointer, event) {
 
     $('#add-data-date-button').attr('data-id', id)
     $('#add-data-date').show()
-}
-
-function deleteDataDate(pointer) {
-    var id = $(pointer).attr('data-id')
-    $.ajax({
-        url: "/api/datadates/" + id,
-        type: 'DELETE',
-        success: function() {
-            $(pointer).closest('tr').remove()
-            $('#data-date-message').empty()
-            $('#data-date-message').append('<div class="alert alert-warning">Data is deleted</div>')
-        }
-    })
 }
 
 function showAddDataDate() {
