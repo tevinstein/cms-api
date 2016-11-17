@@ -1,18 +1,21 @@
 $(document).ready(function() {
+    // render all datas
     getAllDataDates()
+
+    // hide add form
     $('#add-data-date').hide()
+
+    // datepicker
     $(function() {
         $("#datepicker").datepicker();
         $("#datepicker2").datepicker();
     })
-    searchDataDates()
-})
-
-function searchDataDates() {
+    
+    // search function
     $('input[name=search-data-date-letter], input[name=search-data-date-frequency]').on('keyup', function() {
         getAllDataDates()
     })
-}
+})
 
 function getAllDataDates() {
     $.ajax({
@@ -54,7 +57,7 @@ function showDeleteDataDate(pointer) {
     $('#process-delete-data-date').attr('data-id', id)
 }
 
-function deleteDataDate(pointer,event) {
+function deleteDataDate(pointer, event) {
     event.preventDefault()
 
     var id = $(pointer).attr('data-id')

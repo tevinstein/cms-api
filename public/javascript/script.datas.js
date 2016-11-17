@@ -1,14 +1,23 @@
 $(document).ready(function() {
+    // get all datas
     getAllDatas()
-    $('#add-data').hide()
-    searchDatas()
-})
 
-function searchDatas() {
+    // hide add form
+    $('#add-data').hide()
+
+    // search function
     $('input[name=search-data-letter], input[name=search-data-frequency]').on('keyup', function() {
         getAllDatas()
     })
-}
+
+    //must be upper case
+    $('.uppercase').keyup(function() {
+        this.value = this.value.toUpperCase();
+    });
+
+    //must be number
+
+})
 
 function getAllDatas() {
     $.ajax({
@@ -50,7 +59,7 @@ function showDeleteData(pointer) {
     $('#process-delete-data').attr('data-id', id)
 }
 
-function deleteData(pointer,event) {
+function deleteData(pointer, event) {
     event.preventDefault()
 
     var id = $(pointer).attr('data-id')
@@ -84,7 +93,6 @@ function addData(event) {
 
                 $("input[name=data-letter]").val('');
                 $("input[name=data-frequency]").val('');
-
             }
         })
     } else {
@@ -105,7 +113,7 @@ function addData(event) {
     }
 }
 
-function editData(pointer,event) {
+function editData(pointer, event) {
     var id = $(pointer).attr('data-id')
     var letter = $(pointer).closest('tr').find('.data-letter').text()
     var frequency = $(pointer).closest('tr').find('.data-frequency').text()

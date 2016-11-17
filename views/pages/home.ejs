@@ -62,12 +62,12 @@
                             <form>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="search-data-letter" placeholder="Search letter">
+                                        <input type="text" class="form-control uppercase" name="search-data-letter" placeholder="Search letter">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="search-data-frequency" placeholder="Search frequency">
+                                        <input type="text" class="form-control number" name="search-data-frequency" placeholder="Search frequency">
                                     </div>
                                 </div>
                             </form>
@@ -83,10 +83,10 @@
                                 <form id="form-data">
                                     <div class="row">
                                         <div class="form-group col-md-5">
-                                            <input type="input" placeholder="Enter letter (ex: DD)" name="data-letter" class="form-control">
+                                            <input type="input" placeholder="Enter letter (ex: DD)" name="data-letter" class="form-control uppercase">
                                         </div>
                                         <div class="form-group col-md-5">
-                                            <input type="input" placeholder="Enter frequency (ex: 14.99)" name="data-frequency" class="form-control">
+                                            <input type="input" placeholder="Enter frequency (ex: 14.99)" name="data-frequency" class="form-control number">
                                         </div>
                                         <button id="add-data-button" onclick="addData(event)" class="btn btn-info col-md-2">Submit</button>
                                     </div>
@@ -143,7 +143,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="search-data-date-frequency" placeholder="Search frequency">
+                                        <input type="text" class="form-control number" name="search-data-date-frequency" placeholder="Search frequency">
                                     </div>
                                 </div>
                             </form>
@@ -162,7 +162,7 @@
                                             <input type="text" id="datepicker2" class="form-control" name="data-date-letter" placeholder="Select date">
                                         </div>
                                         <div class="form-group col-md-5">
-                                            <input type="input" placeholder="Enter frequency (ex: 12.5)" name="data-date-frequency" class="form-control">
+                                            <input type="input" placeholder="Enter frequency (ex: 12.5)" name="data-date-frequency" class="form-control number">
                                         </div>
                                         <button id="add-data-date-button" onclick="addDataDate(event)" class="btn btn-warning col-md-2">Submit</button>
                                     </div>
