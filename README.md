@@ -1,6 +1,6 @@
 # cms-api
 
-cms-api is web application that lets users perform registration/login as well as manage (CRUD operations) their data and data dates. 
+cms-api is web application that lets users perform registration/login as well as manage (BREAD operations) their data and data dates. 
 
 ##### This is one of my Hacktiv8's project using:
 - Node.js v6+
